@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorting Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page">
+    <header class="topbar">
+      <div>
+        <h1>Sorting Visualizer</h1>
+        <p class="subtitle">Real-time comparisons, swaps/moves, actual execution time + theoretical best/worst</p>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel">  
+        <div class="field">
+          <label for="algorithm">Algorithm (single)</label>
+          <select id="algorithm">
+            <option value="bubble">Bubble Sort</option>
+            <option value="selection">Selection Sort</option>
+            <option value="insertion">Insertion Sort</option>
+            <option value="merge">Merge Sort</option>
+            <option value="quick">Quick Sort</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Compare multiple (same array)</label>
+          <div class="checkboxes" id="algoCheckboxes">
+            <label class="check"><input type="checkbox" value="bubble" checked> Bubble</label>
+            <label class="check"><input type="checkbox" value="selection" checked> Selection</label>
+            <label class="check"><input type="checkbox" value="insertion"> Insertion</label>
+            <label class="check"><input type="checkbox" value="merge"> Merge</label>
+            <label class="check"><input type="checkbox" value="quick"> Quick</label>
+          </div>
+          <div class="buttons" style="margin:10px 0 0;">
+            <button id="btnCompare" class="ghost" onclick="compareAlgorithms()">Compare selected</button>
+          </div>
+        </div>
+
+
+        <div class="field">
+          <label>Array size: <span id="sizeValue">30</span></label>
+          <input type="range" id="size" min="10" max="200" value="30">
+        </div>
+
+        <div class="field">
+          <label>Animation speed: <span id="speedValue">50</span></label>
+          <input type="range" id="speed" min="1" max="100" value="50">
+        </div>
+
+        <div class="buttons">
+          <button id="btnGenerate" onclick="generateArray()">Generate</button>
+          <button id="btnStart" onclick="startSorting()">Start</button>
+          <button id="btnReset" onclick="resetVisualizer()">Reset</button>
+          <button id="btnBestWorst" class="ghost" onclick="toggleBestWorst()">Best/Worst Cases</button>
+        </div>
+
+        <div class="stats">
+          <h3>Stats</h3>
+          <div class="stat-row"><span>Array size</span><strong id="statArraySize">30</strong></div>
+          <div class="stat-row"><span>Time complexity</span><strong id="statComplexity">-</strong></div>
+          <div class="stat-row"><span>Best case</span><strong id="statBest">-</strong></div>
+          <div class="stat-row"><span>Worst case</span><strong id="statWorst">-</strong></div>
+          <div class="stat-row"><span>Comparisons</span><strong id="statComparisons">0</strong></div>
+          <div class="stat-row"><span>Swaps / Moves</span><strong id="statSwaps">0</strong></div>
+          <div class="stat-row"><span>Actual time taken</span><strong id="statTime">0 ms</strong></div>
+          <div class="stat-row hint" id="caseHint">Click “Best/Worst Cases” to preview theoretical cases.</div>
+        </div>
+
+        <div class="legend">
+          <h3>Highlight</h3>
+          <div class="legend-item"><span class="dot base"></span>Default</div>
+          <div class="legend-item"><span class="dot compare"></span>Comparing</div>
+          <div class="legend-item"><span class="dot pivot"></span>Pivot / Selected</div>
+          <div class="legend-item"><span class="dot sorted"></span>Sorted</div>
+        </div>
+      </aside>
+
+      <main class="panel main-panel">
+        <div id="array" aria-label="array bars"></div>
+      </main>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
