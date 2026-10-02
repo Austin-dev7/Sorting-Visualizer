@@ -252,3 +252,37 @@ button.ghost {
 .bar.state-pivot { background: var(--pivot) !important; transform: translateY(-1px); }
 .bar.state-sorted { background: var(--green) !important; transform: translateY(0px); }
 
+/* Dev7 badge — portfolio cyan→red gradient with pulse */
+.dev7-badge {
+  background: linear-gradient(90deg, #22d3ee 0%, #e63946 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  position: relative;
+  padding-bottom: 4px;
+}
+.dev7-badge::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #22d3ee 0%, #e63946 100%);
+  opacity: 0.5;
+  border-radius: 2px;
+  animation: dev7-pulse 3s ease-in-out infinite;
+}
+@keyframes dev7-pulse {
+  0%, 100% { opacity: 0.25; transform: scaleX(0.9); }
+  50% { opacity: 0.85; transform: scaleX(1.05); }
+}
+.project-footer {
+  margin-top: 32px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
